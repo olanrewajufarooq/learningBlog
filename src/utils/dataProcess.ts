@@ -42,7 +42,7 @@ export function processMOOC(data: dbMOOC[] ): dataMOOC[] {
   return data.map(item => ({
     platform: item.platform,
     course: item.course,
-    insitutue: item.insitutue,
+    institute: item.institute,
     start: { month: item.startmonth, year: item.startyear },
     end: { month: item.endmonth, year: item.endyear },
     skills: processSkills(item.skills),
