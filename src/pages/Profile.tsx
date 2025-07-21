@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useFetchData } from "@hooks/useFetchData";
-import type { StartIndex, ShowButtons } from "@customtypes/utils";
+import type { StartIndex } from "@customtypes/utils";
 import type {
   dataEducation, dataMOOC, dataProject, dataWork, dataAll
 } from "@customtypes/data";
@@ -51,18 +51,22 @@ function Profile() {
   useEffect( () => {
     const showButtonsEducation = startIndex.education + maxDisplay.education < eduData.length;
     setShowButtonsEdu( showButtonsEducation );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ eduData ] );
   useEffect( () => {
     const showButtonsWork = startIndex.work + maxDisplay.work < workData.length;
     setShowButtonsWork( showButtonsWork );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ workData ] );
   useEffect( () => {
     const showButtonsMOOC = startIndex.mooc + maxDisplay.mooc < moocData.length;
     setShowButtonsMOOC( showButtonsMOOC );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ moocData ] );
   useEffect( () => {
     const showButtonsProject = startIndex.project + maxDisplay.project < projectData.length;
     setShowButtonsProject( showButtonsProject );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ projectData ] );
 
 
@@ -136,13 +140,14 @@ function Profile() {
       { visibleProjectData.length > 0 && (
         <ProfileSection title="Projects">
           { visibleProjectData.map( ( project, index ) => (
-            <ProfileCardWork
+            <ProfileCardProject
               key={ index }
-              company={ project.company }
               title={ project.title }
-              start={ project.start }
+              client={ project.client }
+              company={ project.company }
               description={ project.description }
               skills={ project.skills }
+              start={ project.start }
               end={ project.end }
             />
           ) ) }
@@ -164,6 +169,8 @@ function Profile() {
               key={ index }
               platform={ mooc.platform }
               course={ mooc.course }
+              institute={ mooc.institute }
+              skills={ mooc.skills }
               start={ mooc.start }
               end={ mooc.end }
             />

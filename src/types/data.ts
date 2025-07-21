@@ -28,7 +28,7 @@ export type dataWork = {
 export type dataMOOC = {
   platform: string;
   course: string;
-  insitutue: string;
+  institute: string;
   start: date;
   end: date;
   skills?: string[];

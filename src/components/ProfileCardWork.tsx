@@ -11,7 +11,7 @@ function ProfileCardWork( { company, title, start, end, description, skills }: P
         <div className={ styles.cardDate }>{ date }</div>
       </div>
       <div className={ styles.cardContent }>{ description }</div>
-      {skills && <div className={ styles.cardSkills }>{ skills.join( ", " ) }</div> }
+      { skills && skills.length > 0 && <div className={ styles.cardSkills }>{ skills.join( ", " ) }</div> }
     </div>
   );
 }
