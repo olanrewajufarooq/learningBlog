@@ -1,5 +1,10 @@
 import { type date } from "@customtypes/utils";
 
+interface dateInterface {
+  start: date;
+  end: date;
+}
+
 const monthOrder = [
   "Jan", "Feb", "Mar", "Apr", "May", "Jun",
   "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
@@ -31,7 +36,7 @@ export function handleDate( start: date, end: date ) {
 
 }
 
-export function sortDataByDate ( a, b ) {
+export function sortDataByDate ( a:dateInterface, b:dateInterface ) {
   // Compare start year (descending)
   if ( b.start.year !== a.start.year ) {
     return b.start.year - a.start.year;
