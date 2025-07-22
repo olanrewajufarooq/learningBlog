@@ -21,29 +21,29 @@ export function handleDate( start: date, end: date ) {
     const endDate = new Date( endYearNum, endMonthIndex );
 
     if ( endDate > today ) {
-      return `${monthOrder[start.month]} ${start.year} — Till Date`;
+      return `${monthOrder[ start.month - 1 ]} ${start.year} — Till Date`;
     }
-    return `${monthOrder[start.month]} ${start.year} — ${monthOrder[end.month]} ${end.year}`;
+    return `${monthOrder[ start.month - 1 ]} ${start.year} — ${monthOrder[ end.month - 1 ]} ${end.year}`;
   }
 
   else if ( end && !start ) {
-    return `${monthOrder[end.month]} ${end.year}`;
+    return `${monthOrder[ end.month - 1 ]} ${end.year}`;
   }
 
   else if ( start && !end ) {
-    return `${monthOrder[start.month]} ${start.year} — Till Date`;
+    return `${monthOrder[ start.month - 1 ]} ${start.year} — Till Date`;
   }
 
 }
 
-export function sortDataByDate ( a:dateInterface, b:dateInterface ) {
+export function sortDataByDate( a: dateInterface, b: dateInterface ) {
   // Compare start year (descending)
   if ( b.start.year !== a.start.year ) {
     return b.start.year - a.start.year;
   }
   // Compare start month (descending)
   if ( b.start.month !== a.start.month ) {
-    return b.start.month - a.start.month ;
+    return b.start.month - a.start.month;
   }
   // Compare end year (descending)
   if ( b.end.year !== a.end.year ) {
