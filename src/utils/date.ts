@@ -15,6 +15,14 @@ const today = new Date();
 export function handleDate( start: date, end: date ) {
   if ( end && start ) {
 
+    if ( end && !start.year && !start.month ) {
+      return `${monthOrder[ end.month - 1 ]} ${end.year}`;
+    }
+
+    if ( start && !end.year && !end.month ) {
+      return `${monthOrder[ start.month - 1 ]} ${start.year} — Till Date`;
+    }
+
     // Convert month string to month index and year to number
     const endMonthIndex = end.month ? Number( end.month ) : 0;
     const endYearNum = end.year ? Number( end.year ) : today.getFullYear();
@@ -23,15 +31,8 @@ export function handleDate( start: date, end: date ) {
     if ( endDate > today ) {
       return `${monthOrder[ start.month - 1 ]} ${start.year} — Till Date`;
     }
+    
     return `${monthOrder[ start.month - 1 ]} ${start.year} — ${monthOrder[ end.month - 1 ]} ${end.year}`;
-  }
-
-  else if ( end && !start ) {
-    return `${monthOrder[ end.month - 1 ]} ${end.year}`;
-  }
-
-  else if ( start && !end ) {
-    return `${monthOrder[ start.month - 1 ]} ${start.year} — Till Date`;
   }
 
 }

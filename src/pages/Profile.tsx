@@ -60,18 +60,6 @@ function Profile() {
 
   const sections = [
     {
-      key: 'education' as optionsType,
-      title: 'Education',
-      data: eduData,
-      visibleData: visibleEduData as dataEducation[],
-      showButtons: showButtonsEducation,
-      renderCard: ( edu: dataEducation ): ProfileCardProps => ( {
-        title: edu.school,
-        subtitle: `${edu.degree} in ${edu.course}`,
-        date: handleDate( edu.start, edu.end ),
-      } ),
-    },
-    {
       key: 'work' as optionsType,
       title: 'Work Experience',
       data: workData,
@@ -109,6 +97,18 @@ function Profile() {
         subtitle: `Learning Platform: ${mooc.platform}`,
         date: handleDate( mooc.start, mooc.end ),
         skills: mooc.skills,
+      } ),
+    },
+    {
+      key: 'education' as optionsType,
+      title: 'Education',
+      data: eduData,
+      visibleData: visibleEduData as dataEducation[],
+      showButtons: showButtonsEducation,
+      renderCard: ( edu: dataEducation ): ProfileCardProps => ( {
+        title: edu.school,
+        subtitle: `${edu.degree} in ${edu.course}`,
+        date: handleDate( edu.start, edu.end ),
       } ),
     },
   ];
