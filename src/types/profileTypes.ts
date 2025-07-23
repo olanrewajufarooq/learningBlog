@@ -10,6 +10,15 @@ export type ProfileSectionProps = {
   children: React.ReactNode;
 };
 
+export type ProfileCardProps = {
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  date?: string;
+  skills?: string[];
+  children?: React.ReactNode;
+};
+
 export type ProfileCardEducationProps = dataEducation;
 export type ProfileCardWorkProps = dataWork;
 export type ProfileCardMOOCProps = dataMOOC;
