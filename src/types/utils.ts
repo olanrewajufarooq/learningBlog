@@ -19,4 +19,6 @@ export type ShowButtons = {
 
 export type FormikActions = {
   setSubmitting: ( isSubmitting: boolean ) => void;
+  setErrors: ( errors: Record<string, string> ) => void;
+  resetForm: () => void;
 };

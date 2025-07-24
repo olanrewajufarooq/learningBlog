@@ -12,3 +12,11 @@ export type ProfileCardProps = {
   skills?: string[];
   children?: React.ReactNode;
 };
+
+export type DialogBoxProps = {
+  isOpen: boolean;
+  onClose: () => void;
+  title: string;
+  message: string;
+  type?: 'success' | 'error' | 'info';
+};

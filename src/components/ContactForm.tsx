@@ -2,8 +2,12 @@ import {Formik, Form, Field, ErrorMessage} from 'formik';
 import * as Yup from 'yup';
 import type { FormikActions } from '@customtypes/utils';
 import { formStyle } from '@styles/pages';
+import supabase from '@utils/supabase';
+import { useDialogBox } from '@hooks/useDialogBox';
+import DialogBox from './DialogBox';
 
 function ContactForm() {
+  const [ isOpen, title, message, messageType, openDialog, closeDialog ] = useDialogBox();
 
   const initialValues = {
     name: '',
@@ -23,11 +27,26 @@ function ContactForm() {
     message: string;
   }
 
-  const handleSubmit = ( values: ContactFormValues, actions: FormikActions ) => {
-    setTimeout(() => {
-      alert(JSON.stringify(values, null, 2));
-      actions.setSubmitting(false);
-    }, 400);
+  const handleSubmit = async ( values: ContactFormValues, actions: FormikActions ) => {
+    const { error } = await supabase.from( 'contact_messages' ).insert( [ values ] );
+    
+    if ( error ) {
+      console.error( 'Error submitting contact form:', error );
+      actions.setSubmitting( false );
+      openDialog(
+        'Submission Error',
+        'There was an error submitting your message. Please try again later.',
+        'error'
+      );
+    } else {
+      actions.resetForm();
+      actions.setSubmitting( false );
+      openDialog(
+        'Message Sent',
+        'Your message has been sent successfully. We will get back to you soon.',
+        'success'
+      );
+    }
   };
 
   return (
@@ -61,6 +80,13 @@ function ContactForm() {
           </div>
         </Form>
       </Formik>
+      <DialogBox
+        isOpen={isOpen}
+        onClose={closeDialog}
+        title={title}
+        message={message}
+        type={messageType}
+      />
     </div>
   );
 }
