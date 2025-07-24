@@ -10,11 +10,11 @@ function DialogBox ( { isOpen, onClose, title, message, type = 'success' }: Dial
   };
 
   const dialogStyles = {
-    container: 'fixed inset-0 z-50 flex items-center justify-center bg-white/50 dark:bg-gray-900/50',
+    container: 'fixed inset-0 z-50 flex items-center justify-center bg-white/30 dark:bg-gray-900/30',
     dialog: 'w-[90%] max-w-md rounded-lg border p-6 shadow-xl bg-white/100 dark:bg-gray-900/100',
     title: 'text-xl font-semibold mb-2',
     message: 'mb-4',
-    button: 'px-4 py-2 rounded font-medium',
+    button: 'px-4 py-2 rounded-2xl font-medium border',
   }
 
   return (
