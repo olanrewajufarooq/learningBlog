@@ -6,15 +6,11 @@ import type { StartIndex } from "@customtypes/utils";
 import type {
   dataEducation, dataMOOC, dataProject, dataWork, dataAll
 } from "@customtypes/data";
-import clsx from "clsx";
-import ProfileSection from "@components/ProfileSection";
+import PageSection from "@components/PageSection";
 import ProfileCard from "@components/ProfileCard";
 import PrevNextButton from "@components/PrevNextButton";
-import type { ProfileCardProps } from "@customtypes/profileTypes";
-
-const styles = {
-  container: clsx( 'container mx-auto px-4 py-10' ),
-};
+import type { ProfileCardProps } from "@customtypes/props";
+import { pageStyle } from "@styles/pages";
 
 const maxDisplay = {
   education: 2, mooc: 2, work: 2, project: 2,
@@ -115,19 +111,19 @@ function Profile() {
 
   // Component
   return (
-    <div className={ styles.container }>
+    <div className={ pageStyle.container }>
 
-      <ProfileSection title="About Me">
+      <PageSection title="About Me">
         <ProfileCard>
           Farooq is a <strong>Fullstack Intern at Luxa</strong> with a passion for <strong>building web applications</strong> that power business and commerce.
           He specializes in frontend development using <strong>React</strong> and <strong>Next.js</strong>, and also works with <strong>Node.js</strong>, <strong>Express</strong>, and various databases for backend and fullstack projects.
           Farooq is <strong>open to collaboration</strong> and new opportunities to create impactful digital solutions.
         </ProfileCard>
-      </ProfileSection>
+      </PageSection>
 
       { sections.map( ( { key, title, data, visibleData, showButtons, renderCard } ) => (
         visibleData.length > 0 && (
-          <ProfileSection key={ key } title={ title }>
+          <PageSection key={ key } title={ title }>
             { visibleData.map( ( item, index ) => (
               <ProfileCard key={ index } { ...renderCard( item as dataEducation & dataWork & dataProject & dataMOOC ) } />
             ) ) }
@@ -140,7 +136,7 @@ function Profile() {
                 disableNext={ startIndex[ key ] + maxDisplay[ key ] >= data.length }
               />
             ) }
-          </ProfileSection>
+          </PageSection>
         )
       ) ) }
 

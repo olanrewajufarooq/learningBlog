@@ -17,3 +17,6 @@ export type ShowButtons = {
   project: boolean;
 };
 
+export type FormikActions = {
+  setSubmitting: ( isSubmitting: boolean ) => void;
+};

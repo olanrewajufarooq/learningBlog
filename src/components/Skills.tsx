@@ -12,7 +12,7 @@ import {
   SiLinux
 } from 'react-icons/si';
 
-import { styles } from "@styles/skillComponent";
+import { styles } from "@styles/skills";
 
 const skillComponentMap: Record<string, React.ReactNode> = {
   javascript: <SiJavascript />,
